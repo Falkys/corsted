@@ -1,0 +1,10 @@
+/* Скрыть TagsBlock и CommentsBlock на мобильных устройствах с шириной экрана меньше 768px */
+@media (max-width: 768px) {
+  .mobile-hide {
+    display: none;
+  }
+}
+
+.root {
+  margin-top: 100px;
+}
