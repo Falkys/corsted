@@ -30,18 +30,6 @@ export const Message = ({
   
   return (
     <div className={{ root: styles.root }}>
-      {isAuthor && (
-        <div className={styles.editButtons}>
-          <Link to={`/posts/${id}/edit`}>
-            <IconButton color="primary">
-              <EditIcon />
-            </IconButton>
-          </Link>
-          <IconButton onClick={onClickRemove} color="secondary">
-            <DeleteIcon />
-          </IconButton>
-        </div>
-      )}
       <div className={styles.wrapper}>
         <UserInfo {...user}/>
         <div className={styles.indention}>
