@@ -1,4 +1,9 @@
 $blue: #4361ee;
+$main-color: #300003;
+$secondary-color: #fff;
+$main-text-color: #fff;
+$secondary-text-color: #b0c7d6;
+$send-message-form: #F5F5F5;
 
 .root {
   background-color: #210002;
@@ -19,6 +24,31 @@ $blue: #4361ee;
     }
   }
 }
+
+.message {
+    margin: 15px 0;
+}
+
+.username {
+  font-size: 11px;
+  color: $main-text-color;
+  opacity: 0.9;
+    margin-bottom: 6px;
+}
+.content {
+  margin: 0;
+  background: $main-color;
+  display: inline;
+  padding: 4px 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  &:hover {
+    overflow: visible;
+    }
+}
+
 
 .image {
   width: 100%;
@@ -49,9 +79,14 @@ $blue: #4361ee;
 }
 
 .title {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 100%;
   font-size: 13px;
   margin: 0;
   pacity: 0.6;
+  overflow: hidden;
+  text-overflow: ellipsis;
   a {
     text-decoration: none;
     color: #000;

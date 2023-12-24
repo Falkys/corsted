@@ -9,6 +9,7 @@ import { TagsBlock } from '../components/TagsBlock';
 import { CommentsBlock } from '../components/CommentsBlock';
 import { fetchPosts, fetchTags } from '../redux/slices/posts';
 import style from './Home.scss';
+import Container from "@mui/material/Container";
 
 
 export const Home = () => {
@@ -26,6 +27,7 @@ export const Home = () => {
   }, []);
 
   return (
+    
     <div style={{ marginTop: 100 }}>
       <Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
         <Tab label="Новые" />

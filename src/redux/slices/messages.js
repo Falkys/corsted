@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from '../../axios';
 
 export const fetchMessages = createAsyncThunk('messages/fetchMessages', async (params) => {
-  const { data } = await axios.get(`/messages/${params.id}`);
+  const { data } = await axios.post(`/messages`, params);
   return data;
 }); 
 
@@ -28,7 +28,7 @@ const messageSlice = createSlice({
     },
     [fetchMessages.rejected]: (state) => {
       state.messages.items = [];
-      state.messages.status = 'error';
+      state.messages.status = 'error'
     },
   },
 });

@@ -16,7 +16,7 @@ const Item = styled(Paper)(({ teme }) => ({
   margin: 0,
   backgroundColor: color,
   borderRadius: "30px",
-  paddingBottom: '90vh',
+  paddingBottom: '100vh',
   color: "#fff",
 }));
 
@@ -39,14 +39,14 @@ export const Chat = () => {
             container 
             spacing={0}
             sx={{
-              border: "1px solid #e0e0e0",
+              border: "0px solid #e0e0e0",
               borderRadius: "30px",
             }}>
             <Grid 
               container
               xs={0.7}
               sx={{
-                height: "90vh",
+                height: "100vh",
                 color: "#fff",
               }}
               >

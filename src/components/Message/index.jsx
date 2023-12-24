@@ -1,16 +1,11 @@
-import React from 'react';
-import clsx from 'clsx';
-import { Link } from "react-router-dom";
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Clear';
-import EditIcon from '@mui/icons-material/Edit';
-import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import ScheduleIcon from '@mui/icons-material/Schedule';
-import styles from './message.module.scss';
-import { UserInfo } from '../UserInfo';
+import React, { useEffect, useRef } from 'react';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 import Skeleton from "@mui/material/Skeleton";
-import { ChatItem } from 'react-chat-elements'
 
 export const Message = ({
   id,
@@ -22,22 +17,62 @@ export const Message = ({
   user,
   isAuthor,
 }) => {
+  const listItemRef = useRef();
+
+  useEffect(() => {
+    if (listItemRef.current) {
+      handleLongWords(listItemRef.current);
+    }
+  }, [content]);
+
+  const handleLongWords = (element) => {
+    if (element) {
+      const words = content.split(/\s+/);
+      element.innerHTML = ""; // Очищаем содержимое элемента
+
+      words.forEach((word, index) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.textContent = word;
+        wordSpan.style.overflowWrap = 'break-word';
+        element.appendChild(wordSpan);
+
+        if (index < words.length - 1) {
+          const spaceSpan = document.createElement('span');
+          spaceSpan.textContent = ' ';
+          element.appendChild(spaceSpan);
+        }
+      });
+    }
+  };
+
   if (isLoading) {
     return <Skeleton width={100} />;
   }
 
-   const onClickRemove = () => {};
-  
   return (
-    <div className={{ root: styles.root }}>
-      <div className={styles.wrapper}>
-        <UserInfo {...user}/>
-        <div className={styles.indention}>
-          <h6 className={clsx(styles.title)}>
-            {content}
-          </h6>
-        </div>
-      </div>
-    </div>
+    <>
+      <Divider variant="inset" component="li" />
+      <ListItem alignItems="flex-start" ref={listItemRef}>
+        <ListItemAvatar>
+          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+        </ListItemAvatar>
+        // В компоненте Message
+        <ListItemText
+          primary={user.username}
+          style={{ color: "#000000", whiteSpace: "pre-line", overflowWrap: 'break-word', wordBreak: 'break-all' }}
+          secondary={
+            <React.Fragment>
+              <Typography
+                sx={{ display: 'inline' }}
+                component="span"
+                variant="body2"
+                color="text.primary"
+                style={{ color: "#000000" }}
+              />
+            </React.Fragment>
+          }
+        />
+      </ListItem>
+    </>
   );
 };

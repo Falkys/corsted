@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://backend.corsted.xyz/',
+  baseURL: 'https://backend.cherryblood.repl.co/',
 });
 
 instance.interceptors.request.use((config) => {

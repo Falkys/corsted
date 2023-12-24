@@ -5,11 +5,11 @@ import Grid from "@mui/material/Grid";
 import Send from '@mui/icons-material/Send';
 import Home from '@mui/icons-material/Home';
 import Group from '@mui/icons-material/Group';
+import TextField from '@mui/material/TextField';
 import Add from '@mui/icons-material/Add';
 import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 const style = {
@@ -31,6 +31,14 @@ export const SideBar = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+   const [openFriends, setOpenFriends] = React.useState(false);
+  const handleOpenFriends = () => setOpenFriends(true);
+  const handleCloseFriends = () => setOpenFriends(false);
+
+     const [openAddServer, setOpenAddServer] = React.useState(false);
+  const handleOpenAddServer = () => setOpenAddServer(true);
+  const handleCloseAddServer = () => setOpenAddServer(false);
 
   const HomeButton = () => {
     navigate('/');
@@ -75,7 +83,7 @@ export const SideBar = () => {
       <IconButton
         color="secondary"
         sx={{ p: '10px' }}
-        onClick={HomeButton}
+        onClick={handleOpenFriends}
       >
         <Group/>
       </IconButton>
@@ -84,7 +92,7 @@ export const SideBar = () => {
       <IconButton
         color="secondary"
         sx={{ p: '10px' }}
-        onClick={HomeButton}
+        onClick={handleOpenAddServer}
       >
         <Add/>
       </IconButton>
@@ -114,10 +122,41 @@ export const SideBar = () => {
   >
     <Box sx={style}>
       <Typography id="modal-modal-title" variant="h6" component="h2">
-        Text in a modalmm
+        My profile
       </Typography>
       <Typography id="modal-modal-description" sx={{ mt: 2 }}>
         Duis mollis, est non commodo luctus, njsaajdnsjdnjksnkjfns
+      </Typography>
+    </Box>
+  </Modal>
+  <Modal
+    open={openFriends}
+    onClose={handleCloseFriends}
+    aria-labelledby="modal-modal-title"
+    aria-describedby="modal-modal-description"
+  >
+    <Box sx={style}>
+      <Typography id="modal-modal-title" variant="h6" component="h2">
+        Friend
+      </Typography>
+      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+        Duis mollis, est non commodo luctus, njsaajdnsjdnjksnkjfns
+      </Typography>
+    </Box>
+  </Modal>
+  <Modal
+    open={openAddServer}
+    onClose={handleCloseAddServer}
+    aria-labelledby="modal-modal-title"
+    aria-describedby="modal-modal-description"
+  >
+    <Box sx={style}>
+      <Typography id="modal-modal-title" variant="h6" component="h2">
+        Add Server
+      </Typography>
+      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+w
+        <TextField />
       </Typography>
     </Box>
   </Modal>
